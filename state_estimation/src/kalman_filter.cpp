@@ -10,7 +10,7 @@ KF::KF(Eigen::VectorXd x0, int state_dims, int mea_dims,
             n(state_dims), m(mea_dims), state(x0),
             A(A),B(B),P(P),Q(Q),H(H),R(R),state_(Eigen::VectorXd::Zero(n)),Pk_(Eigen::MatrixXd::Zero(n,n)) {}
 
-
+//do not redeclare virtual in cpp it should be only in hpp file
 void KF::predict(const Eigen::VectorXd& u){
     /*** @brief this function is used to predict the state ahead and find the error covariance*/
     state_ = A*state + B*u;
