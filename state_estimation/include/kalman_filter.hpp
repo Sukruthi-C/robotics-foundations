@@ -17,20 +17,21 @@ class KF{
 
         Eigen::MatrixXd Pk_; //predcted covariance
         Eigen::VectorXd state_; //predicted state
-        // Constructor for child classes — no A, B, H needed
+        // Constructor for child classes — no A, B, H needed ->EKF/UKF
         KF(Eigen::VectorXd x0, int state_dims, int meas_dims,
         const Eigen::MatrixXd& P,
         const Eigen::MatrixXd& Q,
         const Eigen::MatrixXd& R);
     
     private:
+        // only for base class -> simple KF
         Eigen::MatrixXd A; //state transition matrix
         Eigen::MatrixXd B; //control matrix
         Eigen::MatrixXd H; //measurement matrix
 
     
     public:
-        KF(Eigen::VectorXd x0, int state_dims, int mea_dims, 
+        KF(Eigen::VectorXd x0, int state_dims, int meas_dims, 
             const Eigen::MatrixXd& A,
             const Eigen::MatrixXd& B,
             const Eigen::MatrixXd& P,

@@ -1,13 +1,22 @@
 #include "kalman_filter.hpp"
 
-KF::KF(Eigen::VectorXd x0, int state_dims, int mea_dims, 
+// construtor overloading
+KF::KF(Eigen::VectorXd x0, int state_dims, int meas_dims, 
+            const Eigen::MatrixXd& P,
+            const Eigen::MatrixXd& Q,
+            const Eigen::MatrixXd& R) :
+            n(state_dims), m(meas_dims), state(x0),
+            P(P),Q(Q),R(R),state_(Eigen::VectorXd::Zero(n)),Pk_(Eigen::MatrixXd::Zero(n,n)) {}
+
+// construtor overloading
+KF::KF(Eigen::VectorXd x0, int state_dims, int meas_dims, 
             const Eigen::MatrixXd& A,
             const Eigen::MatrixXd& B,
             const Eigen::MatrixXd& P,
             const Eigen::MatrixXd& Q,
             const Eigen::MatrixXd& H,
             const Eigen::MatrixXd& R) :
-            n(state_dims), m(mea_dims), state(x0),
+            n(state_dims), m(meas_dims), state(x0),
             A(A),B(B),P(P),Q(Q),H(H),R(R),state_(Eigen::VectorXd::Zero(n)),Pk_(Eigen::MatrixXd::Zero(n,n)) {}
 
 //do not redeclare virtual in cpp it should be only in hpp file
