@@ -27,7 +27,7 @@ class KF{
         // only for base class -> simple KF
         Eigen::MatrixXd A; //state transition matrix
         Eigen::MatrixXd B; //control matrix
-        Eigen::MatrixXd H; //measurement matrix
+        Eigen::MatrixXd H; //measurement/observation matrix
 
     
     public:
